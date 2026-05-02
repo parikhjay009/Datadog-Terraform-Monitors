@@ -43,7 +43,8 @@ This catches performance degradation before the platform is fully unavailable. T
 ## Files
 
 - `variables.tf` for input variables
-- `main.tf` for Datadog provider and monitor resources
+- `providers.tf` for Datadog provider
+- `main.tf` for monitor resources
 
 
 ## How to use
