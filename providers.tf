@@ -8,5 +8,5 @@ terraform {
 
 provider "datadog" {
   api_key = var.datadog_api_key
-  app_key = var.datadog_api_key  # Use app key
+  app_key = var.datadog_app_key  # Use app key
 }
