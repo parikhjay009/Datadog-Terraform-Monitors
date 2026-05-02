@@ -1,9 +1,9 @@
 # 1. CRITICAL: Any pod crash (app down)
 resource "datadog_monitor" "pod_crash" {
-  name    = "EKS {{cluster_name}} Pod Crash"
+  name    = "EKS ${var.cluster_name} Pod Crash"
   type    = "query alert"
   query   = "max(last_5m):max:kubernetes_state.pod_status_phase{cluster_name:${var.cluster_name},phase:failed} > 0"
-  message = "CRITICAL: Pods crashing in {{cluster_name}}. Check: https://app.datadoghq.com/infrastructure?query=cluster_name:${var.cluster_name}"
+  message = "CRITICAL: Pods crashing in ${var.cluster_name}. Check: https://app.datadoghq.com/infrastructure?query=cluster_name:${var.cluster_name}"
   tags    = ["env:${var.environment}", "team:sre", "priority:critical"]
 
   monitor_thresholds {
