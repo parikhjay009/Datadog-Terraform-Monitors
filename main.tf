@@ -19,7 +19,7 @@ resource "datadog_monitor" "pod_crash" {
 resource "datadog_monitor" "rds_cpu" {
   name    = "RDS PostgreSQL CPU Overloaded"
   type    = "query alert"
-  query   = "avg(last_5m):avg:aws.rds.cpuutilization{dbinstanceidentifier:your-postgres-rds} > 90"
+  query   = "avg(last_5m):avg:aws.rds.cpuutilization{dbinstanceidentifier:${var.rds_instance_id}} > 90"
   message = "CRITICAL: RDS CPU >90%. Scale instance or investigate slow queries."
   tags    = ["env:${var.environment}", "service:database", "priority:critical"]
 
